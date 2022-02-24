@@ -13,7 +13,7 @@ const createToken = (id) => {
 };
 
 exports.signUp = async (req, res) => {
-  const { email, password, lastName, firstName, picture } = req.body;
+  const { email, password, lastName, firstName, picture, isAdmin } = req.body;
 
   try {
     // const user = await Users.findOne({ where: { email: email } });
@@ -26,7 +26,8 @@ exports.signUp = async (req, res) => {
       password,
       lastName,
       firstName,
-      picture: "",
+      picture: `../img/random_user.png`,
+      isAdmin,
     });
     // const user = await Users.findOne({ where: { email: email } });
     res.status(201).json(user);

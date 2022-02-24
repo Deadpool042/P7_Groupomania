@@ -2,7 +2,7 @@ const { Users } = require("../models");
 
 exports.getAllUsers = async (req, res) => {
   const users = await Users.findAll({
-    attributes: { exclude: ["password", "isAdmin"] },
+    attributes: { exclude: ["password"] },
   });
   res.status(200).json(users);
 };
@@ -11,7 +11,7 @@ exports.userInfo = async (req, res) => {
   const id = req.params.id;
 
   const userInfo = await Users.findByPk(id, {
-    attributes: { exclude: ["password", "isAdmin"] },
+    attributes: { exclude: ["password"] },
   });
   if (!userInfo) {
     res.status(404).json("Utilisateur inexistant");
@@ -25,7 +25,7 @@ exports.updateUser = async (req, res) => {
   const { firstName, lastName } = req.body;
 
   const userInfo = await Users.findByPk(id, {
-    attributes: { exclude: ["password", "isAdmin"] },
+    attributes: { exclude: ["password"] },
   });
 
   if (!userInfo) {

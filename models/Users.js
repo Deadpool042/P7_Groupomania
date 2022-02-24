@@ -8,6 +8,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    isAdmin: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     picture: {
       type: DataTypes.STRING,
       allowNull: true,
-      default: "",
+      defaultValue: `../img/random_user.png`,
     },
     email: {
       type: DataTypes.STRING,
@@ -80,6 +85,12 @@ module.exports = (sequelize, DataTypes) => {
     Users.hasMany(models.Likes, {
       onDelete: "cascade",
     });
+
+    Users.belongTo =
+      (models.role,
+      {
+        onDelete: "cascade",
+      });
 
     Users.hasMany(models.Posts, {
       onDelete: "cascade",

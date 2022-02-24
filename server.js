@@ -35,7 +35,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/images", express.static(path.join(__dirname, "images")));
 //jwt
 app.get("*", checkUsers);
 app.get("/jwtid", requireAuth, (req, res) => {

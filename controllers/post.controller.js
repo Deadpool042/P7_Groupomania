@@ -1,4 +1,5 @@
-const { Posts, Comments, Likes, sequelize } = require("../models");
+const { Posts, Comments, Likes } = require("../models");
+
 const { uploadErrors } = require("../utils/errors.utils");
 const fs = require("fs");
 const { promisify } = require("util");

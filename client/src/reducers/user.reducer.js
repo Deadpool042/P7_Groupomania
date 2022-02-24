@@ -1,6 +1,6 @@
 //Etat initial du store de redux
 
-import { GET_USER, UPLOAD_PICTURE } from "../actions/user.actions";
+import { GET_USER, UPLOAD_PICTURE, DELETE_USER } from "../actions/user.actions";
 
 const initalState = {};
 
@@ -13,6 +13,9 @@ export default function userReducer(state = initalState, action) {
         ...state,
         picture: action.payload,
       };
+
+    case DELETE_USER:
+      return action.payload;
 
     default:
       return state;

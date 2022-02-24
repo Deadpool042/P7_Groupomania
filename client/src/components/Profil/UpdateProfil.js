@@ -1,13 +1,18 @@
 import React from "react";
 import LeftNav from "../LeftNav";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadImg from "./UploadImg";
 import { dateParser } from "../Utils";
+import { deleteUser } from "../../actions/user.actions";
 
 const UpdateProfil = () => {
   const userData = useSelector((state) => state.userReducer); //Recuperer les données issues de userReducer (depuis le store)
   const fullName = userData.firstName + " " + userData.lastName;
   const error = useSelector((state) => state.errorReducer.userErrors);
+
+  const dispatch = useDispatch();
+  console.log(userData.id);
+  const delUser = () => dispatch(deleteUser(userData.id));
 
   return (
     <div className="profil-container">
@@ -33,6 +38,19 @@ const UpdateProfil = () => {
             <br />
 
             <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+            <br />
+            <button
+              onClick={() => {
+                if (
+                  window.confirm("Voulez-vous vraiment supprimer votre compte?")
+                ) {
+                  delUser();
+                  window.location = "/";
+                }
+              }}
+            >
+              Supprimer profil
+            </button>
           </div>
         </div>
       </div>

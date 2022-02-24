@@ -30,7 +30,7 @@ const Card = ({ post }) => {
   useEffect(() => {
     !isEmpty(usersData) && setIsLoading(false);
   }, [usersData]);
-  // console.log(post);
+
   return (
     <li className="card-container" key={post.id}>
       {isLoading ? (
@@ -95,22 +95,25 @@ const Card = ({ post }) => {
                 title={post._id}
               ></iframe>
             )}
-            {userData.Userid === post.UserId && (
+
+            {(userData.id === post.UserId && (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
                 </div>
+
                 <DeleteCard id={post.id} />
               </div>
-            )}
-            {userData.id === post.UserId && (
-              <div className="button-container">
-                <div onClick={() => setIsUpdated(!isUpdated)}>
-                  <img src="./img/icons/edit.svg" alt="edit" />
+            )) ||
+              (userData.isAdmin === 1 && (
+                <div className="button-container">
+                  <div onClick={() => setIsUpdated(!isUpdated)}>
+                    <img src="./img/icons/edit.svg" alt="edit" />
+                  </div>
+
+                  <DeleteCard id={post.id} />
                 </div>
-                <DeleteCard id={post.id} />
-              </div>
-            )}
+              ))}
             <div className="card-footer">
               <div className="comment-icon">
                 <img

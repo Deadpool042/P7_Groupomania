@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const GET_USER_ERRORS = "GET_USER_ERRORS";
+export const DELETE_USER = "DELETE_USER";
 
 export const getUser = (uid) => {
   //dispatch est le contenu qui est evnoyé au reducer
@@ -37,5 +38,18 @@ export const uploadPicture = (data, id) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+};
+
+export const deleteUser = (UserId) => {
+  return (dispatch) => {
+    return axios({
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}api/user/${UserId}`,
+    })
+      .then(() => {
+        dispatch({ type: DELETE_USER, payload: { UserId } });
+      })
+      .catch((err) => console.log(err));
   };
 };
