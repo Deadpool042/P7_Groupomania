@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const { requireAuth } = require("../middlewares/auth.middleware");
+const { requireAuth } = require("../middlewares/auth.middleware"); // Protège les routes via postman ou autre similaire
 const postController = require("../controllers/post.controller");
 const multer = require("multer");
 const upload = multer();
 
-router.get("/", postController.getAllPosts); //Ok ca marche
-router.post("/", requireAuth, upload.single("file"), postController.createPost); // Ok ca marche
-router.put("/:id", requireAuth, postController.updatePost); // Ok ca marche
+router.get("/", postController.getAllPosts);
+router.post("/", requireAuth, upload.single("file"), postController.createPost);
+router.put("/:id", requireAuth, postController.updatePost);
 
-router.delete("/:id", requireAuth, postController.deletePost); //Ok ca marche
+router.delete("/:id", requireAuth, postController.deletePost);
 router.patch("/like-post/:id", requireAuth, postController.likePost);
 router.patch("/unlike-post/:id", requireAuth, postController.unlikePost);
 

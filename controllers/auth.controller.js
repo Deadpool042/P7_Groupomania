@@ -16,11 +16,6 @@ exports.signUp = async (req, res) => {
   const { email, password, lastName, firstName, picture, isAdmin } = req.body;
 
   try {
-    // const user = await Users.findOne({ where: { email: email } });
-    // if (user) return res.status(200).json({ message: "Utilisateur existant" });
-    // const salt = await bcrypt.genSalt(10);
-    // const encryptedPassword = await bcrypt.hash(password, salt);
-
     const user = await Users.create({
       email,
       password,
@@ -29,16 +24,13 @@ exports.signUp = async (req, res) => {
       picture: `../img/random_user.png`,
       isAdmin,
     });
-    // const user = await Users.findOne({ where: { email: email } });
+
     res.status(201).json(user);
   } catch (error) {
     if (
       error.name === "SequelizeValidationError" ||
       error.name === "SequelizeUniqueConstraintError"
     ) {
-      // console.log(error.errors.map((err) => err));
-      // console.log(error.errors[0].validatorName.includes("isEmail"));
-      // const errorsList = error.errors.map((err) => err);
       console.log(error);
       signUpErrors(error);
       res.status(200).send(signUpErrors(error));

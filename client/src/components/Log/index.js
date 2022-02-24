@@ -3,7 +3,7 @@ import SignUpForm from "./SignUpForm";
 import SignInForm from "./SignInForm";
 
 const Log = (props) => {
-  //Props permets de faire reference a la page index de log
+  //Props permets de faire reference a la page index de log depuis les autres pages liées
   const [signUpModal, setSignUpModal] = useState(props.signup);
   const [signInModal, setSignInModal] = useState(props.signin);
 

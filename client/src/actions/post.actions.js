@@ -31,9 +31,6 @@ export const getPosts = (num) => {
 };
 
 export const addPost = (data) => {
-  // for (var value of data.values()) {
-  //   console.log(value);
-  // }
   return (dispatch) => {
     return axios({
       method: "post",
@@ -124,7 +121,7 @@ export const addComment = (
       .catch((err) => console.log(err));
   };
 };
-//les 3 arguments passent bien correctement a voir le reducer
+
 export const editComment = (PostId, commentId, commentBody, UserId) => {
   return (dispatch) => {
     return axios({

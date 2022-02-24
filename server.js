@@ -7,12 +7,11 @@ const cookieParker = require("cookie-parser");
 // import cookieParser from "cookie-parser";
 const userRoutes = require("./routes/user.routes");
 // import userRoutes from "./routes/user.routes";
-// const userRoutes = require("./routes/user.routes");
+
 const postRoutes = require("./routes/posts.routes");
 
 const { checkUsers, requireAuth } = require("./middlewares/auth.middleware");
 const db = require("./models");
-// const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
 const app = express();
@@ -35,7 +34,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//jwt
+//jwt -- Verifie que l'utilisateur est bien enregistré
 app.get("*", checkUsers);
 app.get("/jwtid", requireAuth, (req, res) => {
   res.json(res.locals.user.id);
