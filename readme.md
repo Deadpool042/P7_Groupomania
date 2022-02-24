@@ -8,4 +8,4 @@ Dans le dossier client:
 -npm install
 -npm start
 
-Précision pour la fonctionnalité "Admin" et il suffit de passer à 1 dans SQL l'utilisateur qui sera ADMIN afin d'avoir accès à toutes les routes pour modifier, ou supprimer un post ou un commentaire
+Précision pour la fonctionnalité "Admin" et il suffit de passer à 1 la colonne isAdmin dans SQL l'utilisateur qui sera ADMIN afin d'avoir accès à toutes les routes pour modifier, ou supprimer un post ou un commentaire
