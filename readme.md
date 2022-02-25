@@ -1,4 +1,6 @@
-Pour les besoins du projet j'ai laissé le dossier /config
+Pour les besoins du projet j'ai laissé le dossier /config puis il faut créer une base de donnée dans SQL
+et configurer  /config/config.json avec ses propres identifants
+
 
 Dans le racine:
 -npm install
