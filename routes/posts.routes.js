@@ -4,7 +4,7 @@ const postController = require("../controllers/post.controller");
 const multer = require("multer");
 const upload = multer();
 
-router.get("/", postController.getAllPosts);
+router.get("/", requireAuth, postController.getAllPosts);
 router.post("/", requireAuth, upload.single("file"), postController.createPost);
 router.put("/:id", requireAuth, postController.updatePost);
 

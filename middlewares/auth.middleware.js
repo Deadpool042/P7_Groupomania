@@ -13,9 +13,7 @@ exports.checkUsers = (req, res, next) => {
         next();
       } else {
         let user = await Users.findByPk(decodedToken.id);
-
         res.locals.user = user;
-
         next();
       }
     });
